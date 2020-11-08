@@ -1,0 +1,25 @@
+<mat-card>
+    <mat-card-header>
+        <div mat-card-avatar>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">login</mat-icon>
+        </div>
+        <mat-card-title>Please enter your Email to enter</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
+            <mat-form-field>
+                <label>
+                    <input matInput placeholder="* email" formControlName="email">
+                </label>
+
+                <mat-error *ngIf="email.errors?.required">
+                    Field required
+                </mat-error>
+                <mat-error *ngIf="email.errors?.emailValidator">
+                    Please enter valid email
+                </mat-error>
+            </mat-form-field>
+            <button class="submit-btn" mat-stroked-button type="submit" color="primary">Enter</button>
+        </form>
+    </mat-card-content>
+</mat-card>
