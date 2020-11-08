@@ -85,5 +85,8 @@
       }
     }
   },
-  "defaultProject": "books-wishlist"
+  "defaultProject": "books-wishlist",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

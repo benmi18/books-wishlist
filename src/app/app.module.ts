@@ -11,6 +11,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { SearchComponent } from './pages/search/search.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -18,14 +23,18 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     LoginComponent,
     SearchComponent,
     WishlistComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialUIModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
