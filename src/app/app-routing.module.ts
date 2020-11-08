@@ -3,12 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from "./pages/login/login.component";
 import {SearchComponent} from "./pages/search/search.component";
 import {WishlistComponent} from "./pages/wishlist/wishlist.component";
+import {AuthGuardService} from "./services/auth-guard.service";
 
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
-  { path: 'search', component: SearchComponent },
-  { path: 'wishlist', component: WishlistComponent },
+  { path: 'search', component: SearchComponent, canActivate: [AuthGuardService] },
+  { path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuardService] },
 ];
 
 @NgModule({
