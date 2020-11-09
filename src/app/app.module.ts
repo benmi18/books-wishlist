@@ -20,7 +20,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { SearchListComponent } from './components/search-list/search-list.component';
+import { BooksListComponent } from './components/books-list/books-list.component';
 import { BookCardComponent } from './components/book-card/book-card.component';
 import { ModalComponent } from './components/modal/modal.component';
 //Reducers
@@ -38,7 +38,7 @@ import * as wishlist from './store/reducers/wishlist.reducer';
     LoginFormComponent,
     NavbarComponent,
     NamePipe,
-    SearchListComponent,
+    BooksListComponent,
     BookCardComponent,
     TruncateStringPipe,
     ModalComponent

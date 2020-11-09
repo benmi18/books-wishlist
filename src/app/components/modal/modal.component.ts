@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {BookModel} from "../../store/models/book.model";
 import {select, Store} from "@ngrx/store";
 import {State} from "../../store/state";
@@ -19,7 +19,11 @@ export class ModalComponent implements OnInit, OnDestroy{
 
   public isInWishList: boolean;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public book: BookModel, private store: Store<State>) { }
+  constructor(
+      public dialogRef: MatDialogRef<ModalComponent>,
+      @Inject(MAT_DIALOG_DATA) public book: BookModel,
+      private store: Store<State>
+  ) { }
 
   ngOnInit(): void {
     this.checkIfBookInWishList();
@@ -36,10 +40,12 @@ export class ModalComponent implements OnInit, OnDestroy{
 
   onAddToWishlistClick() {
     this.store.dispatch(addToWishlist({book: this.book}));
+    this.dialogRef.close();
   }
 
   onRemoveFromWishlistClick() {
     this.store.dispatch(removeFromWishlist({bookID: this.book.id}));
+    this.dialogRef.close();
   }
 
   public ngOnDestroy(): void {
