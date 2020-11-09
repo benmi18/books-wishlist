@@ -1,16 +1,49 @@
-import {Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {BookModel} from "../../store/models/book.model";
+import {select, Store} from "@ngrx/store";
+import {State} from "../../store/state";
+import {addToWishlist, removeFromWishlist} from "../../store/actions/wishlist.actions";
+import {selectWishlistBooks} from "../../store/selectors/wishlist.selectors";
+import {takeUntil, tap} from "rxjs/operators";
+import {Subject} from "rxjs";
+
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss']
+  styleUrls: ['./modal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ModalComponent {
+export class ModalComponent implements OnInit, OnDestroy{
+  private readonly onDestroy$ = new Subject<void>();
 
-  constructor(@Inject(MAT_DIALOG_DATA) public book: BookModel) { }
+  public isInWishList: boolean;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public book: BookModel, private store: Store<State>) { }
+
+  ngOnInit(): void {
+    this.checkIfBookInWishList();
+  }
+
+  private checkIfBookInWishList() {
+    this.store.pipe(select(selectWishlistBooks)).pipe(
+        tap((books) => {
+          this.isInWishList = !!books.find(b => b.id === this.book.id);
+        }),
+        takeUntil(this.onDestroy$)
+    ).subscribe()
+  }
 
   onAddToWishlistClick() {
-    console.log('add to wishlist click')
+    this.store.dispatch(addToWishlist({book: this.book}));
+  }
+
+  onRemoveFromWishlistClick() {
+    this.store.dispatch(removeFromWishlist({bookID: this.book.id}));
+  }
+
+  public ngOnDestroy(): void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
   }
 }

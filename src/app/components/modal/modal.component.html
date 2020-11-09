@@ -21,6 +21,10 @@
         </div>
     </div>
     <div mat-dialog-actions>
-        <button mat-button color="primary" (click)="onAddToWishlistClick()">Add to wishlist</button>
+        <button *ngIf="!isInWishList; else removeFromWishlist" mat-button color="primary" (click)="onAddToWishlistClick()">Add to wishlist</button>
     </div>
 </div>
+
+<ng-template #removeFromWishlist>
+    <button mat-button color="warn" (click)="onRemoveFromWishlistClick()">Remove from wishlist</button>
+</ng-template>
