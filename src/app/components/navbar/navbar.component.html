@@ -2,11 +2,31 @@
     <mat-toolbar-row>
         <span>Books Wishlist</span>
         <span class="spacer"></span>
-        <div class="navigation-links">
-            <button class="link" mat-button routerLink="/search">Search</button>
-            <button class="link" mat-button routerLink="/wishlist">Wishlist</button>
-            <button class="link" mat-button routerLink="" (click)="onLogoutClick()">Logout</button>
+        <div class="desktop-links">
+            <div class="navigation-links">
+                <button class="link" mat-button routerLink="/search">Search</button>
+                <button class="link" mat-button routerLink="/wishlist">Wishlist</button>
+                <button class="link" mat-button routerLink="" (click)="onLogoutClick()">Logout</button>
+            </div>
         </div>
+
         <span>Welcome <span class="user-name">{{(auth$ | async).email | name}}</span></span>
+
+        <div class="mobile-links">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button routerLink="/search" mat-menu-item>
+                    <span>Search</span>
+                </button>
+                <button routerLink="/wishlist" mat-menu-item>
+                    <span>Wishlist</span>
+                </button>
+                <button routerLink="" mat-menu-item (click)="onLogoutClick()">
+                    <span>Logout</span>
+                </button>
+            </mat-menu>
+        </div>
     </mat-toolbar-row>
 </mat-toolbar>

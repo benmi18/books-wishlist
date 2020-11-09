@@ -11,3 +11,19 @@
 .user-name {
   color: #F5B7B1;
 }
+
+// Small devices 320px and up
+@media (min-width: 320px) {
+  .desktop-links {
+    display: none;
+  }
+}
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .desktop-links {
+    display: block;
+  }
+  .mobile-links {
+    display: none;
+  }
+}
