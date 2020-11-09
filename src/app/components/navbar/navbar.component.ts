@@ -8,7 +8,7 @@ import {AuthState} from "../../store/state/auth.state";
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  @Input() auth: Observable<AuthState>;
+  @Input('auth') auth$: Observable<AuthState>;
 
   constructor() { }
 

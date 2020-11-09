@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { NamePipe } from './pipes/name.pipe'
 import { BooksEffects } from './store/effects/books.effects';
 import {HttpClientModule} from "@angular/common/http";
+import { TruncateStringPipe } from './pipes/truncate-string.pipe';
 
 //Components
 import { AppComponent } from './app.component';
@@ -19,6 +20,8 @@ import { SearchComponent } from './pages/search/search.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { SearchListComponent } from './components/search-list/search-list.component';
+import { BookCardComponent } from './components/book-card/book-card.component';
 //Reducers
 import * as auth from './store/reducers/auth.reducer';
 import * as books from './store/reducers/books.reducer';
@@ -32,7 +35,10 @@ import * as books from './store/reducers/books.reducer';
     WishlistComponent,
     LoginFormComponent,
     NavbarComponent,
-    NamePipe
+    NamePipe,
+    SearchListComponent,
+    BookCardComponent,
+    TruncateStringPipe
   ],
   imports: [
     BrowserModule,

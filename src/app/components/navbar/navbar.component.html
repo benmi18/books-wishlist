@@ -2,6 +2,6 @@
     <mat-toolbar-row>
         <span>Books Wishlist</span>
         <span class="spacer"></span>
-        <span>Welcome {{(auth | async).email | name}}</span>
+        <span>Welcome {{(auth$ | async).email | name}}</span>
     </mat-toolbar-row>
 </mat-toolbar>
