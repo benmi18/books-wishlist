@@ -1,0 +1,10 @@
+<mat-card class="book-card" (click)="onBookClick()">
+    <div class="card-header">
+        <span>{{book.volumeInfo.title | truncateString: 25}}</span>
+    </div>
+    <div class="card-content">
+        <div class="book-image-container">
+            <img class="book-image" src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="Photo of {{book.volumeInfo.title}} book">
+        </div>
+    </div>
+</mat-card>
