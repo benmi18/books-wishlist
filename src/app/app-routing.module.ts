@@ -9,7 +9,7 @@ import {AuthGuardService} from "./services/auth-guard.service";
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
   { path: 'search', component: SearchComponent, canActivate: [AuthGuardService] },
-  { path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuardService] },
+  { path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuardService] }
 ];
 
 @NgModule({

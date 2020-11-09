@@ -8,13 +8,13 @@ import {AuthState} from "./store/state/auth.state";
 @Component({
   selector: 'app-root',
   template: `
-      <app-navbar *ngIf="(auth | async).isLoggedIn" [auth]="auth"></app-navbar>
-      <router-outlet></router-outlet>
+    <app-navbar *ngIf="(auth$ | async).isLoggedIn" [auth]="auth$"></app-navbar>     
+    <router-outlet></router-outlet>
   `,
   styles: []
 })
 export class AppComponent implements OnInit{
-  public auth: Observable<AuthState>;
+  public auth$: Observable<AuthState>;
 
   constructor(private store: Store<State>) {}
 
@@ -23,6 +23,6 @@ export class AppComponent implements OnInit{
   }
 
   private getAuth() {
-    this.auth = this.store.pipe(select(selectAuth));
+    this.auth$ = this.store.pipe(select(selectAuth));
   }
 }

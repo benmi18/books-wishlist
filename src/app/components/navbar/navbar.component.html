@@ -5,8 +5,8 @@
         <div class="navigation-links">
             <button class="link" mat-button routerLink="/search">Search</button>
             <button class="link" mat-button routerLink="/wishlist">Wishlist</button>
-            <button class="link" mat-button routerLink="">Logout</button>
+            <button class="link" mat-button routerLink="" (click)="onLogoutClick()">Logout</button>
         </div>
-        <span>Welcome {{(auth$ | async).email | name}}</span>
+        <span>Welcome <span class="user-name">{{(auth$ | async).email | name}}</span></span>
     </mat-toolbar-row>
 </mat-toolbar>
