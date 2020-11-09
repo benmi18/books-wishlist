@@ -2,6 +2,9 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {Subject} from "rxjs";
 import {debounceTime, takeUntil, tap} from "rxjs/operators";
+import {State} from "../../store/state";
+import {Store} from "@ngrx/store";
+import {searchBooks} from "../../store/actions/books.actions";
 
 @Component({
   selector: 'app-search',
@@ -13,7 +16,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   public searchControl = new FormControl();
 
-  constructor() { }
+  constructor(private store: Store<State>) { }
 
   ngOnInit() {
     this.handleOnSearch();
@@ -23,7 +26,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.searchControl.valueChanges
         .pipe(
             debounceTime(250),
-            tap((query: string) => console.log(query)), // TODO: Dispatch search api call
+            tap((query: string) => this.store.dispatch(searchBooks({query}))),
             takeUntil(this.onDestroy$)
         ).subscribe();
   }

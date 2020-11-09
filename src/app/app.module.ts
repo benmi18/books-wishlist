@@ -9,6 +9,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { NamePipe } from './pipes/name.pipe'
+import { BooksEffects } from './store/effects/books.effects';
+import {HttpClientModule} from "@angular/common/http";
 
 //Components
 import { AppComponent } from './app.component';
@@ -19,6 +21,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { NavbarComponent } from './components/navbar/navbar.component';
 //Reducers
 import * as auth from './store/reducers/auth.reducer';
+import * as books from './store/reducers/books.reducer';
 
 
 @NgModule({
@@ -37,11 +40,14 @@ import * as auth from './store/reducers/auth.reducer';
     BrowserAnimationsModule,
     MaterialUIModule,
     ReactiveFormsModule,
+    HttpClientModule,
     StoreModule.forRoot({
-      auth: auth.reducer
+      auth: auth.reducer,
+      books: books.reducer
     }, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    EffectsModule.forFeature([BooksEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
