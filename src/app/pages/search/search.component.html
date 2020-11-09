@@ -1,1 +1,6 @@
-<p>search works!</p>
+<mat-form-field class="search-field">
+    <mat-label>Search for your wished book</mat-label>
+    <label>
+        <input matInput placeholder="lord of..." [formControl]="searchControl">
+    </label>
+</mat-form-field>
