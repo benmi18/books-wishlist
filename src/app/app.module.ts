@@ -26,6 +26,7 @@ import { ModalComponent } from './components/modal/modal.component';
 //Reducers
 import * as auth from './store/reducers/auth.reducer';
 import * as books from './store/reducers/books.reducer';
+import * as wishlist from './store/reducers/wishlist.reducer';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import * as books from './store/reducers/books.reducer';
     HttpClientModule,
     StoreModule.forRoot({
       auth: auth.reducer,
-      books: books.reducer
+      books: books.reducer,
+      wishlist: wishlist.reducer
     }, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),

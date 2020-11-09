@@ -5,7 +5,10 @@ import {searchBooksSuccess} from "../actions/books.actions";
 
 export const booksReducer = createReducer(
   booksInitialState,
-    on(searchBooksSuccess, (state, {searchRes}) => ({...state, searchRes}))
+    on(searchBooksSuccess, (state, {searchRes}) => ({
+        ...state,
+        searchRes
+    }))
 );
 
 export function reducer(state: BooksState | undefined, action: Action) {
