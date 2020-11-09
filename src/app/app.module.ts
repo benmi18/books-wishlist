@@ -56,8 +56,7 @@ import * as wishlist from './store/reducers/wishlist.reducer';
       wishlist: wishlist.reducer
     }, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([]),
-    EffectsModule.forFeature([BooksEffects])
+    EffectsModule.forRoot([BooksEffects])
   ],
   providers: [],
   bootstrap: [AppComponent],
