@@ -13,7 +13,7 @@ export class BooksEffects {
 
   constructor(private actions$: Actions, private booksService: BooksService) {}
 
-  searchBook$ = createEffect(() => this.actions$.pipe(
+  searchBooks$ = createEffect(() => this.actions$.pipe(
       ofType(BooksActionsType.search),
       mergeMap(({query}) => this.booksService.searchBooks(query)),
       pipe(

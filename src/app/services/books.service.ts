@@ -15,7 +15,7 @@ export class BooksService {
   constructor(private http: HttpClient) { }
 
   public searchBooks(query: string) {
-    return this.http.get(`${this.config.BASE_URL}?${this.config.API_KEY}&q=${query}`)
+    return this.http.get(`${this.config.BASE_URL}?${this.config.API_KEY}&q=${query}&startIndex=0&maxResults=20`)
         .pipe(
             catchError((error) => {
               // TODO: handle error

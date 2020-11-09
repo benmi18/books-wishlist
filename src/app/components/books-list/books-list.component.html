@@ -1,1 +1,11 @@
-<app-book-card *ngFor="let book of (booksList$ | async)" [book]="book"></app-book-card>
+<div class="list-container">
+    <app-book-card *ngFor="let book of paginationList$ | async" [book]="book"></app-book-card>
+</div>
+<mat-paginator
+        *ngIf="!!(booksList$ | async).length && (booksList$ | async).length > paginationPageSize"
+        class="list-paginator"
+        [length]="(booksList$ | async).length"
+        [pageSize]="paginationPageSize"
+        hidePageSize
+        (page)="onPageEvent($event)">
+</mat-paginator>

@@ -16,7 +16,7 @@ import {BookModel} from "../../store/models/book.model";
 export class SearchComponent implements OnInit, OnDestroy {
   private readonly onDestroy$ = new Subject<void>();
 
-  public searchedBooks$: Observable<Array<BookModel>>
+  public searchedBooks$: Observable<Array<BookModel>>;
   public searchControl = new FormControl();
 
   constructor(private store: Store<State>) { }
