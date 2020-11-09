@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {select, Store} from "@ngrx/store";
 import {State} from "../../store/state";
 import {Observable} from "rxjs";
@@ -8,7 +8,8 @@ import {selectWishlistBooks} from "../../store/selectors/wishlist.selectors";
 @Component({
   selector: 'app-wishlist',
   templateUrl: './wishlist.component.html',
-  styleUrls: ['./wishlist.component.scss']
+  styleUrls: ['./wishlist.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WishlistComponent implements OnInit {
   public wishlistBooks$: Observable<Array<BookModel>>;

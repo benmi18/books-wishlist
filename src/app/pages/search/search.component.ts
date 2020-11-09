@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {Observable, Subject} from "rxjs";
 import {debounceTime, takeUntil, tap} from "rxjs/operators";
@@ -11,7 +11,8 @@ import {BookModel} from "../../store/models/book.model";
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchComponent implements OnInit, OnDestroy {
   private readonly onDestroy$ = new Subject<void>();

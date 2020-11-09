@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {select, Store} from "@ngrx/store";
 import {State} from "./store/state";
 import {Observable} from "rxjs";
@@ -11,7 +11,7 @@ import {AuthState} from "./store/state/auth.state";
     <app-navbar *ngIf="(auth$ | async).isLoggedIn" [auth]="auth$"></app-navbar>     
     <router-outlet></router-outlet>
   `,
-  styles: []
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit{
   public auth$: Observable<AuthState>;
