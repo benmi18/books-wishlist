@@ -2,6 +2,11 @@
     <mat-toolbar-row>
         <span>Books Wishlist</span>
         <span class="spacer"></span>
+        <div class="navigation-links">
+            <button class="link" mat-button routerLink="/search">Search</button>
+            <button class="link" mat-button routerLink="/wishlist">Wishlist</button>
+            <button class="link" mat-button routerLink="">Logout</button>
+        </div>
         <span>Welcome {{(auth$ | async).email | name}}</span>
     </mat-toolbar-row>
 </mat-toolbar>
