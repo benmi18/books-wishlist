@@ -1,0 +1,26 @@
+<div class="modal-container">
+    <h1 mat-dialog-title class="book-title">{{book.volumeInfo.title}}</h1>
+    <h3 *ngIf="book.volumeInfo.subtitle" class="book-subtitle">{{book.volumeInfo.subtitle}}</h3>
+    <div mat-dialog-content class="modal-content">
+        <div class="book-details">
+            <p *ngIf="book.volumeInfo.publishedDate" class="book-published-date field">
+                <span class="bold">Published Date: </span>{{book.volumeInfo.publishedDate}}
+            </p>
+            <div class="book-authors field">
+                <span class="bold">Author:</span>
+                <ul>
+                    <li *ngFor="let author of book.volumeInfo.authors">{{author}}</li>
+                </ul>
+            </div>
+            <p *ngIf="book.volumeInfo.description" class="book-description field">
+                <span class="bold">Description: </span>{{book.volumeInfo.description}}
+            </p>
+        </div>
+        <div class="book-image">
+            <img class="book-image" src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="Photo of {{book.volumeInfo.title}} book">
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button color="primary" (click)="onAddToWishlistClick()">Add to wishlist</button>
+    </div>
+</div>

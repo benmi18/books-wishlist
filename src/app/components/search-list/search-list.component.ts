@@ -22,8 +22,4 @@ export class SearchListComponent implements OnInit {
   private getSearchedBooksList() {
     this.searchedBooksList$ = this.store.pipe(select(selectSearchedBooks));
   }
-
-  public handleBookClick(book: BookModel) {
-    console.log('book::: ', book)
-  }
 }

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Observable} from "rxjs";
 import {AuthState} from "../../store/state/auth.state";
 
@@ -7,12 +7,6 @@ import {AuthState} from "../../store/state/auth.state";
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
   @Input('auth') auth$: Observable<AuthState>;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

@@ -1,5 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {BookModel} from "../../store/models/book.model";
+import {MatDialog} from "@angular/material/dialog";
+import {ModalComponent} from "../modal/modal.component";
 
 @Component({
   selector: 'app-book-card',
@@ -9,7 +11,9 @@ import {BookModel} from "../../store/models/book.model";
 export class BookCardComponent {
   @Input() book: BookModel;
 
-  public onBookClick() {
+  constructor(public dialog: MatDialog) {}
 
+  public onBookClick() {
+    this.dialog.open(ModalComponent, {data: this.book});
   }
 }

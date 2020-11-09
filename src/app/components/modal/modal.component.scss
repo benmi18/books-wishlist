@@ -1,0 +1,31 @@
+.modal-container {
+  max-width: 700px;
+  padding: 25px;
+}
+.bold {
+  font-weight: bold;
+  color: #5D6D7E;
+}
+.book-title {
+  color: #1A5276;
+  margin: 0;
+}
+.book-subtitle {
+  color: #7FB3D5;
+  font-size: 15px;
+}
+.modal-content {
+  margin-top: 25px;
+  display: flex;
+}
+.book-details {
+  margin-right: 25px;
+}
+.field {
+  margin-bottom: 15px;
+}
+.book-authors {
+  ul {
+    list-style: none;
+  }
+}

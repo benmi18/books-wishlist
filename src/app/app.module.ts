@@ -22,6 +22,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearchListComponent } from './components/search-list/search-list.component';
 import { BookCardComponent } from './components/book-card/book-card.component';
+import { ModalComponent } from './components/modal/modal.component';
 //Reducers
 import * as auth from './store/reducers/auth.reducer';
 import * as books from './store/reducers/books.reducer';
@@ -38,7 +39,8 @@ import * as books from './store/reducers/books.reducer';
     NamePipe,
     SearchListComponent,
     BookCardComponent,
-    TruncateStringPipe
+    TruncateStringPipe,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +58,7 @@ import * as books from './store/reducers/books.reducer';
     EffectsModule.forFeature([BooksEffects])
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalComponent]
 })
 export class AppModule { }
